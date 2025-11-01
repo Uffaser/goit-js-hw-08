@@ -64,7 +64,7 @@ const images = [
     },
 ];
 
-listEl = document.querySelector('.gallery');
+const listEl = document.querySelector('.gallery');
 
 function imageTemplate({ preview, original, description }) {
     return `<li class="gallery-item">
@@ -75,24 +75,16 @@ function imageTemplate({ preview, original, description }) {
                 data-source="${original}"
                 alt="${description}"/>
             </a>
-            </li>
-`;
+            </li>`;
 }
 
 function imagesTemplate(images) {
     const markup = images.map(imageTemplate).join('');
 
-    return markup;
+    listEl.innerHTML = markup;
 }
 
-const render = (listEl.innerHTML = imagesTemplate(images));
-
-const imageEl = document.querySelectorAll('.gallery-image');
-
-const image = [...imageEl].map(el => {
-    el.setAttribute('width', '360px');
-    el.setAttribute('height', '200px');
-});
+imagesTemplate(images);
 
 listEl.addEventListener('click', handleListClick);
 
